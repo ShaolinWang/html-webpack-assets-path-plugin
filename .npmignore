@@ -1,0 +1,8 @@
+test/
+node_modules/
+.vscode/
+.gitignore
+index.js
+package-lock.json
+.travis.yml
+rollup.config.js
