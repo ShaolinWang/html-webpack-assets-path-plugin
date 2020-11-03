@@ -9,9 +9,7 @@ _Alert js or css path in the html file.Works with newer [html-webpack-plugin](ht
 1. Install via `npm i -D html-webpack-assets-path-plugin`
 2. Add to your webpack config AFTER HtmlWebpackPlugin
 ```javascript
-    var HtmlWebpackAssetsPathPlugin = require('html-webpack-assets-path-plugin').HtmlWebpackAssetsPathPlugin;
-    // OR for import style
-    import {HtmlWebpackAssetsPathPlugin} from 'html-webpack-assets-path-plugin'
+    var HtmlWebpackAssetsPathPlugin = require('html-webpack-assets-path-plugin');
     ...
     plugins: [
         new HtmlWebpackPlugin({
