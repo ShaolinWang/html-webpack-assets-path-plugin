@@ -5,7 +5,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin  from 'mini-css-extract-plugin';
 import rimraf from 'rimraf';
-import HtmlWebpackAssetsPathPlugin from '../index.js';
+import HtmlWebpackAssetsPathPlugin from '../src/index.mjs';
 
 const __dirname = process.cwd();
 const OUTPUT_DIR = join(__dirname, './test/test_dist');

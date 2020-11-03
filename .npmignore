@@ -1,8 +1,7 @@
 test/
-node_modules/
 .vscode/
 .gitignore
-index.js
+src/
 package-lock.json
 .travis.yml
 rollup.config.js

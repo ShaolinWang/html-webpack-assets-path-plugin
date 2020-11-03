@@ -1,10 +1,11 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-  input: 'index.js',
+  input: 'src/index.mjs',
   output: {
     file: 'dist/bundle.js',
-    format: 'umd',
+    exports: 'auto',
+    format: 'cjs',
     name: 'HtmlWebpackAssetsPathPlugin',
     globals: {
       'html-webpack-plugin': 'HtmlWebpackPlugin'

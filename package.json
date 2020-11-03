@@ -1,9 +1,8 @@
 {
   "name": "html-webpack-assets-path-plugin",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "a plugin for html-webpack-plugin to alert css or js path in the html",
-  "main": "index.js",
-  "type": "module",
+  "main": "dist/bundle.js",
   "scripts": {
     "test": "mocha",
     "prebuild": "rimraf dist",
@@ -15,19 +14,21 @@
   ],
   "author": "wangshaolin3",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "chai": "4.2.0",
     "css-loader": "5.0.0",
-    "html-webpack-plugin": "^3.0.0",
     "mini-css-extract-plugin": "1.0.0",
     "mocha": "8.1.3",
     "rimraf": "3.0.2",
-    "webpack": "^3.0.0"
-  },
-  "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-external-helpers": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "rollup": "^2.33.1",
     "rollup-plugin-babel": "^4.4.0"
+  },
+  "peerDependencies": {
+    "webpack": "^4.0.0",
+    "html-webpack-plugin": ">3.0.0"
   }
 }
