@@ -14,8 +14,8 @@ export default class HtmlWebpackAssetsPathPlugin {
     if (compiler.hooks) {
       // webpack 4 support
       compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
-        if (compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration) {
-          compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapAsync(
+        if (compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing) {
+          compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tapAsync(
             PLUGIN_NAME,
             (data, cb) => {
               const webpackPublicPath = data.assets.publicPath;

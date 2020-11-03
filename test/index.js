@@ -34,7 +34,7 @@ const webpackDevOptions = {
         styles: join(__dirname, './test/data/styles.css')
     },
     output: {
-        path: OUTPUT_DIR
+        path: OUTPUT_DIR,
     },
     module: {
         rules: [
@@ -60,7 +60,7 @@ const webpackProdOptions = {
     output: {
         filename: '[name].[contenthash].min.js',
         path: OUTPUT_DIR,
-        pathinfo: true
+        pathinfo: true,
     },
     mode: 'production',
     plugins: [
@@ -89,7 +89,6 @@ describe('HtmlWebpackAssetsPathPlugin Development Mode', () => {
                 ...webpackDevOptions.plugins,
                 new HtmlWebpackPlugin({
                     ...HtmlWebpackPluginOptions,
-                    publicPath: '',
                 }),
                 new HtmlWebpackAssetsPathPlugin(),
             ]
@@ -106,6 +105,11 @@ describe('HtmlWebpackAssetsPathPlugin Development Mode', () => {
 
     it('should do nothing when no cssPath nor jsPath is specified but publicPath specified', (done) => {
         webpack({ ...webpackDevOptions,
+            output: {
+                ...webpackDevOptions.output,
+                // for html-webpack-plugin 3
+                publicPath: './dist',
+            },
             plugins: [
                 ...webpackDevOptions.plugins,
                 new HtmlWebpackPlugin({
@@ -117,6 +121,7 @@ describe('HtmlWebpackAssetsPathPlugin Development Mode', () => {
         }, (err) => {
             chai.expect(!!err).to.be.false;
             const html = getOutput();
+            console.log(html);
             chai.expect(/script\s+.*?src\s*=\s*"\.\/dist\/polyfill\.js"/i.test(html), 'polyfill bundle path is right').to.be.true;
             chai.expect(/script\s+.*?src\s*=\s*"\.\/dist\/app\.js"/i.test(html), 'app bundle path is right').to.be.true;
             chai.expect(/script\s+.*?src\s*=\s*"\.\/dist\/styles\.js"/i.test(html), 'styles js bundle path is right').to.be.true;
@@ -131,7 +136,6 @@ describe('HtmlWebpackAssetsPathPlugin Development Mode', () => {
                 ...webpackDevOptions.plugins,
                 new HtmlWebpackPlugin({
                     ...HtmlWebpackPluginOptions,
-                    publicPath: '',
                 }),
                 new HtmlWebpackAssetsPathPlugin({
                     cssAssetsPath: './css',
@@ -151,6 +155,10 @@ describe('HtmlWebpackAssetsPathPlugin Development Mode', () => {
 
     it('should replace cssPath and jsPath for relative tag when cssPath,jsPath,publicPath is specified', (done) => {
         webpack({ ...webpackDevOptions,
+            output: {
+                ...webpackDevOptions.output,
+                publicPath: './dist',
+            },
             plugins: [
                 ...webpackDevOptions.plugins,
                 new HtmlWebpackPlugin({
@@ -189,7 +197,6 @@ describe('HtmlWebpackAssetsPathPlugin Production Mode', function () {
                 ...webpackProdOptions.plugins,
                 new HtmlWebpackPlugin({
                     ...HtmlWebpackPluginOptions,
-                    publicPath: '',
                 }),
                 new HtmlWebpackAssetsPathPlugin(),
             ]
@@ -206,6 +213,10 @@ describe('HtmlWebpackAssetsPathPlugin Production Mode', function () {
 
     it('should do nothing when no cssPath nor jsPath is specified but publicPath specified', (done) => {
         webpack({ ...webpackProdOptions,
+            output: {
+                ...webpackProdOptions.output,
+                publicPath: './dist',
+            },
             plugins: [
                 ...webpackProdOptions.plugins,
                 new HtmlWebpackPlugin({
@@ -231,7 +242,6 @@ describe('HtmlWebpackAssetsPathPlugin Production Mode', function () {
                 ...webpackProdOptions.plugins,
                 new HtmlWebpackPlugin({
                     ...HtmlWebpackPluginOptions,
-                    publicPath: '',
                 }),
                 new HtmlWebpackAssetsPathPlugin({
                     cssAssetsPath: './css',
@@ -251,6 +261,10 @@ describe('HtmlWebpackAssetsPathPlugin Production Mode', function () {
 
     it('should replace cssPath and jsPath for relative tag when cssPath,jsPath,publicPath is specified', (done) => {
         webpack({ ...webpackProdOptions,
+            output: {
+                ...webpackProdOptions.output,
+                publicPath: './dist',
+            },
             plugins: [
                 ...webpackProdOptions.plugins,
                 new HtmlWebpackPlugin({
