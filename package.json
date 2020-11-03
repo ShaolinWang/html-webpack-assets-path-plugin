@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-assets-path-plugin",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "a plugin for html-webpack-plugin to alert css or js path in the html",
   "main": "index.js",
   "type": "module",
